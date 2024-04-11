@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Galeria de Arte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f8f8; /* Seasalt */
+            transition: background-color 1s;
+        }
+        #navbar {
+            background-color: #272838; /* Raisin black */
+            overflow: hidden;
+        }
+        #navbar a {
+            float: left;
+            display: block;
+            color: #f3de8a; /* Flax */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.5s;
+        }
+        #navbar a:hover {
+            background-color: #eb9486; /* Coral pink */
+            color: black;
+        }
+        .section {
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            padding: 20px;
+            background-color: #fff;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .active {
+            opacity: 1;
+            height: auto;
+        }
+        #galeria img, #inicio img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            transition: transform 0.5s;
+        }
+        #galeria img:hover, #inicio img:hover {
+            transform: scale(1.1);
+        }
+        #contacto form {
+            display: flex;
+            flex-direction: column;
+        }
+        #contacto form input, #contacto form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #7e7f9a; /* Cool gray */
+            transition: border-color 0.5s;
+        }
+        #contacto form input:focus, #contacto form textarea:focus {
+            border-color: #eb9486; /* Coral pink */
+        }
+        #contacto form button {
+            padding: 10px 20px;
+            background-color: #272838; /* Raisin black */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+        #contacto form button:hover {
+            background-color: #eb9486; /* Coral pink */
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="#inicio">Inicio</a>
+    <a href="#galeria">Galeria de Fotos</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<div id="inicio" class="section active">
+    <h1>Inicio</h1>
+    <p>Bienvenido a nuestra Galeria de Arte. Aqui encontraras una variedad de obras de arte fascinantes. Disfruta tu visita!</p>
+    <img src="arte5.png" alt="Arte 1">
+</div>
+
+<div id="galeria" class="section">
+    <h1>Galeria de Fotos</h1>
+    <img src="arte1.png" alt="Arte 1">
+    <img src="arte2.png" alt="Arte 2">
+    <img src="arte3.png" alt="Arte 3">
+    <img src="arte4.png" alt="Arte 4">
+</div>
+
+<div id="contacto" class="section">
+    <h1>Contacto</h1>
+    <form>
+        <label>
+            <input type="text" placeholder="Nombre" required>
+        </label>
+        <label>
+            <input type="email" placeholder="Correo electronico" required>
+        </label>
+        <label>
+            <textarea placeholder="Mensaje" required></textarea>
+        </label>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('navbar').addEventListener('click', function(e) {
+        const active = document.querySelector('.active');
+        if(active) {
+            active.classList.remove('active');
+        }
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if(target) {
+            setTimeout(function() {
+                target.classList.add('active');
+            }, 1000);
+        }
+        // Change background color based on section
+        let color;
+        switch(e.target.getAttribute('href')) {
+            case '#inicio':
+                color = '#f9f8f8'; /* Seasalt */
+                break;
+            case '#galeria':
+                color = '#f3de8a'; /* Flax */
+                break;
+            case '#contacto':
+                color = '#eb9486'; /* Coral pink */
+                break;
+            default:
+                color = '#f9f8f8'; /* Seasalt */
+        }
+        document.body.style.backgroundColor = color;
+        e.preventDefault();
+    });
+</script>
+
+</body>
+</html>
